@@ -2,6 +2,8 @@
 
 https://techtrain.dev/mypage/railway/23
 
+npx generate-react-cli component 
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
