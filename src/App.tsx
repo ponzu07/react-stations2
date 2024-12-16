@@ -1,14 +1,27 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import ThreadList from './components/thread_list/thread_list';
+import Header from './components/header/header'
+import Create_thread from './components/Create_thread/Create_thread';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [CreatingThread, setCreatingThread] = useState(false);
 
   return (
-    <ThreadList />
+    <main className="bg-gray-50">
+      <Header threadCreateClick={() => setCreatingThread(true)} />
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
+        {/* Create_threadコンポーネント切り替え */}
+        {CreatingThread ? (
+            <Create_thread Back={() => setCreatingThread(false)} />
+          ) : (
+          <>
+            <h1 className="text-2xl font-bold mb-6">スレッド一覧</h1>
+            <ThreadList />
+          </>
+        )}
+      </div>
+    </main>
   )
 }
 
