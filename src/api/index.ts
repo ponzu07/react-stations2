@@ -9,6 +9,15 @@ interface Thread {
   title: string;
 }
 
+// GET /threads/:threadId/posts
+interface ThreadResponse {
+  threadId: string;
+  posts: {
+    id: string;
+    post: string;
+  }[];
+}
+
 // API通信用クラス
 class APIClient {
   private baseUrl: string;
@@ -58,15 +67,20 @@ export class API {
     return this.instance;
   }
 
-  // 非同期thread型-thread取得
+  // スレッド一覧取得
   async getThreads(offset?: string): Promise<Thread[]> {
     const option = offset ? `?offset=${offset}` : '';
     return this.client.get(`/threads${option}`);
   }
 
-  // 非同期thread型-thread作成
+  // スレッド作成
   async createThread(title: string): Promise<Thread> {
     return this.client.post('/threads', { title });
+  }
+
+  // スレッド内レス取得
+  async getThreadPosts(threadId: string, offset: string): Promise<ThreadResponse> {
+    return this.client.get(`/threads/${threadId}/posts?offset=${offset}`);
   }
 }
 

@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ThreadList from './components/thread_list/thread_list';
 import Header from './components/header/header';
 import Create_thread from './components/Create_thread/Create_thread';
+import Threads from './components/Threads/Threads';
 import './App.css';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
           <Routes>
           <Route path="/" element={<ThreadList />} />
           <Route path="/threads/new" element={<Create_thread />} />
+          <Route path="/threads/:thread_id" element={<Threads />} />
         </Routes>
         </div>
       </main>
