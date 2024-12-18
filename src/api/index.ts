@@ -1,8 +1,3 @@
-// 新しく出るコード
-// ・スタックトレース取得用にErrorオブジェクト作成
-// ・ジェネリック型(T)
-
-// 型定義ゾーン
 // GET /threads
 interface Thread {
   id: string;
@@ -81,6 +76,11 @@ export class API {
   // スレッド内レス取得
   async getThreadPosts(threadId: string, offset: string): Promise<ThreadResponse> {
     return this.client.get(`/threads/${threadId}/posts?offset=${offset}`);
+  }
+
+  // レス作成
+  async createPost(threadId: string, post: string): Promise<{ id: string; threadId: string; post: string }> {
+    return this.client.post(`/threads/${threadId}/posts`, { post });
   }
 }
 
