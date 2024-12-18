@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import { api } from '@/api';
 
 interface Create_threadProps {
