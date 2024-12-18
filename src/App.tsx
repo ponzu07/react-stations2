@@ -11,14 +11,9 @@ function App() {
         <Header />
         <div className="container mx-auto px-4 py-8 max-w-4xl">
           <Routes>
-            <Route path="/" element={ 
-            <>
-              <h1 className="text-2xl font-bold mb-6">スレッド一覧</h1>
-              <ThreadList />
-            </>} />
-            <Route path="/threads/new" element={
-            <Create_thread />} />
-          </Routes>
+          <Route path="/" element={<ThreadList />} />
+          <Route path="/threads/new" element={<Create_thread />} />
+        </Routes>
         </div>
       </main>
     </BrowserRouter>
